@@ -1,9 +1,7 @@
 <div class="container" style="padding:20px 0">
     <h1>DrinkCounts#index</h1>
-    <p>TODO1 :  当日のコーヒー飲んだ回数を取得する</p>
     <p>TODO2 :  [drink!]ボタンを行全体にマッピングする</p>
     <p>TODO3 :  設定値を理解した上で、豆の挽き方、抽出量とかのラベルとsubmitの設定</p>
-    <p>TODO4 :  不要な情報を削除する</p>
 
     <h4 style="padding: 20px">1more drink!</h4>
     <div class="container" >
@@ -35,8 +33,9 @@
                                 <td><%= @users[i].name %></td>
                                 <td><%= @users[i].mail_address %></td>
                                 <td>
-                                    <div class="from-group">
-                                        <input type="submit" value="drink!" class="btn btn-primary">
+                                    <div class="form-group">
+                                        <!--<button type='submit' name='action' value='<%  %>send'>送信</button>-->
+                                        <!--<input type="submit" value="drink!" class="btn btn-primary">-->
                                     </div>
                                 </td>
                             </tr>
@@ -58,7 +57,7 @@
                                 <td><%= @users[i].name %></td>
                                 <td><%= @users[i].mail_address %></td>
                                 <td>
-                                    <div class="from-group">
+                                    <div class="form-group">
                                         <input type="submit" value="drink!" class="btn btn-primary">
                                     </div>
                                 </td>

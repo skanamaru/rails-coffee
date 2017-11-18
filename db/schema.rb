@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171104144333) do
+ActiveRecord::Schema.define(version: 20171118055517) do
 
   create_table "drink_counts", force: :cascade do |t|
     t.string "user_id"
     t.integer "count"
+    t.integer "volume_id"
+    t.integer "strength_id"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "strengths", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -22,6 +37,12 @@ ActiveRecord::Schema.define(version: 20171104144333) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "mail_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "volumes", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

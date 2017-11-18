@@ -3,7 +3,13 @@
 one:
   user_id: MyString
   count: 1
+  volume_id: 1
+  strength_id: 1
+  type_id: 1
 
 two:
   user_id: MyString
   count: 1
+  volume_id: 1
+  strength_id: 1
+  type_id: 1

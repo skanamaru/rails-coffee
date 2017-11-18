@@ -1,22 +1,36 @@
 <div class="container" style="padding:20px 0">
     <h1>DrinkCounts#index</h1>
-    <p>TODO1 :  当日のコーヒー飲んだ回数を取得する</p>
-    <p>TODO2 :  [drink!]ボタンを行全体にマッピングする</p>
-    <p>TODO3 :  設定値を理解した上で、豆の挽き方、抽出量とかのラベルとsubmitの設定</p>
-    <p>TODO4 :  不要な情報を削除する</p>
+    <p>TODO1 :  抽出量、濃さ、淹れ方のボタンが不自然</p>
 
-    <h4 style="padding: 20px">1more drink!</h4>
+    <%= form_tag(drink_counts_path, method: "POST", remote: true ) do %>
+
     <div class="container" >
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary"><input type="radio" name="options1" id="option11" autocomplete="off">エスプレッソ</label>
-            <label class="btn btn-primary"><input type="radio" name="options1" id="option12" autocomplete="off">エスプレッソダブル</label>
-            <label class="btn btn-primary"><input type="radio" name="options1" id="option13" autocomplete="off">カフェジャポーネ</label>
+        <div class="container" style="vertical-align:middle;margin-bottom: 5px" >
+            <label class="control-label col-xs-2" >抽出量</label>
+            <div class="btn-group" data-toggle="buttons" col-xs-10 style="display: inline">
+                <label class="btn btn-primary active"><input type="radio" name="volume_id" value="1" autocomplete="off" checked>エスプレッソ</label>
+                <label class="btn btn-primary"><input type="radio" name="volume_id" value="2" autocomplete="off">エスプレッソLarge</label>
+                <label class="btn btn-primary"><input type="radio" name="volume_id" value="3" autocomplete="off">ロングコーヒー</label>
+                <label class="btn btn-primary"><input type="radio" name="volume_id" value="4" autocomplete="off">ロングコーヒーLarge</label>
+            </div>
         </div>
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-primary"><input type="radio" name="options2" id="option21" autocomplete="off">エスプレッソ</label>
-            <label class="btn btn-primary"><input type="radio" name="options2" id="option22" autocomplete="off">エスプレッソLarge</label>
-            <label class="btn btn-primary"><input type="radio" name="options2" id="option23" autocomplete="off">ロングコーヒー</label>
-            <label class="btn btn-primary"><input type="radio" name="options2" id="option24" autocomplete="off">ロングコーヒーLarge</label>
+        <div class="container" style="vertical-align:middle;margin-bottom: 5px" >
+            <label class="control-label col-xs-2">濃さ</label>
+            <div class="btn-group" data-toggle="buttons" col-xs-10 style="display: inline">
+                <label class="btn btn-primary active"><input type="radio" name="strength_id" value="1" autocomplete="off" checked>EXマイルド</label>
+                <label class="btn btn-primary"><input type="radio" name="strength_id" value="2" autocomplete="off">マイルド</label>
+                <label class="btn btn-primary"><input type="radio" name="strength_id" value="3" autocomplete="off">スタンダード</label>
+                <label class="btn btn-primary"><input type="radio" name="strength_id" value="4" autocomplete="off">ストロング</label>
+                <label class="btn btn-primary"><input type="radio" name="strength_id" value="5" autocomplete="off">EXストロング</label>
+            </div>
+        </div>
+        <div class="container" >
+            <label class="control-label col-xs-2">淹れ方</label>
+            <div class="btn-group" data-toggle="buttons" col-xs-10 style="display: inline">
+                <label class="btn btn-primary active"><input type="radio" name="type_id" value="1" autocomplete="off" checked>エスプレッソ-single-</label>
+                <label class="btn btn-primary"><input type="radio" name="type_id" value="2" autocomplete="off">エスプレッソ-double-</label>
+                <label class="btn btn-primary"><input type="radio" name="type_id" value="3" autocomplete="off">カフェジャボーネ</label>
+            </div>
         </div>
     </div>
 
@@ -30,18 +44,12 @@
                 <tbody>
                     <% for i in 0..2 %>
                         <% if i < @users_drink_counts.length %>
-                            <tr>
+                            <tr id="tr-user-id-<%= @users_drink_counts[i].id %>">
                                 <td><%= @users_drink_counts[i].id %></td>
                                 <td><%= @users_drink_counts[i].name %></td>
                                 <td id="td-user-id-<%=@users_drink_counts[i].id %>"><%= @users_drink_counts[i].dcount %></td>
                                 <td>
-                                    <div class="form-group">
-                                        <%= form_tag(drink_counts_path, method: "POST", remote: true ) do %>
-                                            <%= hidden_field_tag :user_id, @users_drink_counts[i].id %>
-                                            <%= submit_tag "drink!!!", class: "btn btn-primary" %>
-                                        <!--<input type="submit" value="drink!" class="btn btn-primary">-->
-                                        <% end %>
-                                    </div>
+                                <%= button_tag "1 more", class: "btn btn-primary", name: :user_id, value: @users_drink_counts[i].id %>
                                 </td>
                             </tr>
                         <% end %>
@@ -57,18 +65,12 @@
                 <tbody>
                     <% for i in 3..5 %>
                         <% if i < @users_drink_counts.length %>
-                            <tr>
+                            <tr id="tr-user-id-<%= @users_drink_counts[i].id %>">
                                 <td><%= @users_drink_counts[i].id %></td>
                                 <td><%= @users_drink_counts[i].name %></td>
                                 <td id="td-user-id-<%=@users_drink_counts[i].id %>"><%= @users_drink_counts[i].dcount %></td>
                                 <td>
-                                    <div class="form-group">
-                                        <%= form_tag(drink_counts_path, method: "POST", remote: true ) do %>
-                                            <%= hidden_field_tag :user_id, @users_drink_counts[i].id %>
-                                            <%= submit_tag "drink!!!", class: "btn btn-primary" %>
-                                        <!--<input type="submit" value="drink!" class="btn btn-primary">-->
-                                        <% end %>
-                                    </div>
+                                <%= button_tag "1 more", class: "btn btn-primary", name: :user_id, value: @users_drink_counts[i].id %>
                                 </td>
                             </tr>
                         <% end %>
@@ -78,5 +80,6 @@
             </div>
         </div>
     </div>
+    <% end %>
 </div>
 <div id='result'></div>

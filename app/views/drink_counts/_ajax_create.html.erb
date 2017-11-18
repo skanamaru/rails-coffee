@@ -1,1 +1,6 @@
-<td id="td-user-id-<%=@user_id %>"><%= @user_drink_count[0].dcount %></td>
+<td><%= @user_drink_count[0].id %></td>
+<td><%= @user_drink_count[0].name %></td>
+<td id="td-user-id-<%=@user_drink_count[0].id %>"><%= @user_drink_count[0].dcount %></td>
+<td>
+<%= button_tag "1 more", class: "btn btn-primary", name: :user_id, value: @user_drink_count[0].id %>
+</td>
